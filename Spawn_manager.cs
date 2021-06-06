@@ -8,6 +8,8 @@ public class Spawn_manager : MonoBehaviour
     private GameObject _enemyPrefab;
     [SerializeField]
     private GameObject _enemyContainer;
+
+    private bool _stopspawning = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,7 @@ public class Spawn_manager : MonoBehaviour
     //while
     IEnumerator SpawnRoutine()
     {   
-        while(true)
+        while(_stopspawning == false)
         {
             Vector3 postospawn = new Vector3(Random.Range(-8f,8f),7,0);
             GameObject newEnemy =  Instantiate(_enemyPrefab,postospawn,Quaternion.identity);
@@ -41,5 +43,9 @@ public class Spawn_manager : MonoBehaviour
         //while loop
         //Instantiate enemy prefab
         //yield wait for 5 secs
+    }
+    public void onplayerDeath() 
+    {
+        _stopspawning = true;
     }
 }
