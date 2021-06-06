@@ -6,6 +6,8 @@ public class Spawn_manager : MonoBehaviour
 {   
     [SerializeField]
     private GameObject _enemyPrefab;
+    [SerializeField]
+    private GameObject _enemyContainer;
     // Start is called before the first frame update
     void Start()
     {
