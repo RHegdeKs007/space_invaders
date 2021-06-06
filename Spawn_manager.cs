@@ -31,7 +31,8 @@ public class Spawn_manager : MonoBehaviour
         while(true)
         {
             Vector3 postospawn = new Vector3(Random.Range(-8f,8f),7,0);
-            Instantiate(_enemyPrefab,postospawn,Quaternion.identity);
+            GameObject newEnemy =  Instantiate(_enemyPrefab,postospawn,Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f);
         }
         //wait one frame and then this is called
